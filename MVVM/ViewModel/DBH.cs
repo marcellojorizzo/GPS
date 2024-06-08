@@ -2,7 +2,7 @@
 // Author: Marcello Jorizzo
 // Creation Date: 24.01.2023
 // Last Modified: 09.06.2024
-// Description: This program allows users to quickly calculate in between two GPS points in a given step range
+// Description: This program allows users to quickly calculate additional points in between two GPS points in a given step range; defaultStep is 0.7 meter
 
 using System;
 using System.Collections.Generic;
@@ -18,12 +18,8 @@ namespace TestGPS.Data
 {
     public class DBH : INotifyPropertyChanged
 
-
     {
         private ObservableCollection<GPS> gpsList;
-
- 
-     
 
         public DBH()
         {
@@ -55,7 +51,6 @@ namespace TestGPS.Data
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
 
     }
 }

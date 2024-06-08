@@ -2,8 +2,7 @@
 // Author: Marcello Jorizzo
 // Creation Date: 24.01.2023
 // Last Modified: 09.06.2024
-// Description: This program allows users to quickly calculate in between two GPS points in a given step range
-
+// Description: This program allows users to quickly calculate additional points in between two GPS points in a given step range; defaultStep is 0.7 meter
 
 using System;
 using System.Collections.Generic;
@@ -27,12 +26,9 @@ namespace TestGPS.MVVM.Model
         private double latitude;
         private double longitude;
 
-
-
         // Konstanten von GPS
         const double e_radius = 6371000;
-
-   
+ 
 
         // Properties von GPS
         public double Latitude
@@ -235,9 +231,7 @@ namespace TestGPS.MVVM.Model
 
     public  static class GPSMovement 
     {
-
-       
-
+    
         // Diese Methode berechnet neue GPS Koordinaten 
         public static GPSList getNewPoints(GPSList wayPoints)
         {
@@ -257,7 +251,8 @@ namespace TestGPS.MVVM.Model
                 // Berechnen der Entfernung zwischen Punkt A und Punkt B
                 // double distance = GPSMath.HaversineDistance(latA, lonA, latB, lonB);
                 double distance = GPS.HaversineDistance(point_A, point_B);
-                Console.WriteLine($"Die Entfernung zwischen Punkt A und Punkt B beträgt {distance:F6} m");
+                //#use for debugging!
+                //Console.WriteLine($"Die Entfernung zwischen Punkt A und Punkt B beträgt {distance:F6} m");
 
 
                 double step = point_A.Step;
@@ -277,7 +272,8 @@ namespace TestGPS.MVVM.Model
                     point_A = GPS.HaversineDestination(point_A, bearing);
 
                     // Ausgabe der neuen Koordinaten von Punkt A
-                    Console.WriteLine($"Neue Koordinaten von Punkt A: lat = {point_A.Latitude:F6}, lon = {point_A.Longitude:F6} step ={point_A.Step}");
+                    //#use for debugging!
+                    //Console.WriteLine($"Neue Koordinaten von Punkt A: lat = {point_A.Latitude:F6}, lon = {point_A.Longitude:F6} step ={point_A.Step}");
 
                     // neuen Punkt in GPS Liste einsetzten
                     GPS newPoint = new GPS(point_A.Latitude, point_A.Longitude, n_wayPoints[0].Step);
@@ -287,7 +283,8 @@ namespace TestGPS.MVVM.Model
                     //distance = GPSMath.HaversineDistance(latA, lonA, latB, lonB);
                     distance = GPS.HaversineDistance(point_A, point_B);
 
-                    Console.WriteLine($"Die neue Entfernung zwischen Punkt A und Punkt B beträgt {distance:F6} m");
+                    //#use for debugging!
+                    //Console.WriteLine($"Die neue Entfernung zwischen Punkt A und Punkt B beträgt {distance:F6} m");
                 }// end while Loop
             } //end for Loop [i]
             return n_wayPoints;
@@ -305,7 +302,8 @@ namespace TestGPS.MVVM.Model
             StreamWriter k_writer = new StreamWriter(testPutFile);
 
             // Informationen für das txt File:
-            k_writer.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>");
+            string userName = Environment.UserName;
+            k_writer.WriteLine(String.Format("creator: {0}",userName));
             
 
             foreach (GPS value in n_wayPoints)
@@ -331,9 +329,8 @@ namespace TestGPS.MVVM.Model
             // Informationen für das gpx File:
            string userName = Environment.UserName;
             pgxWriter.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>");
-            pgxWriter.WriteLine ("<gpx version=\"1.1\" creator=\"Environment.UserName\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.topografix.com/GPX/1/1\" xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">");
+            pgxWriter.WriteLine (String.Format("<gpx version=\"1.1\" creator=\"{0}\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.topografix.com/GPX/1/1\" xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">", userName));
             
-
 
             // Zählvariable für die Kennzeichung der Koodrianatenpunkte definieren
             int count = 1;
@@ -351,8 +348,6 @@ namespace TestGPS.MVVM.Model
             }
             pgxWriter.Close();
         }
-
-
 
     }
 }

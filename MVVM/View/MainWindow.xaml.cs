@@ -2,7 +2,7 @@
 // Author: Marcello Jorizzo
 // Creation Date: 24.01.2023
 // Last Modified: 09.06.2024
-// Description: This program allows users to quickly calculate in between two GPS points in a given step range
+// Description: This program allows users to quickly calculate additional points in between two GPS points in a given step range; defaultStep is 0.7 meter
 
 
 using System;
@@ -27,8 +27,6 @@ namespace TestGPS.MVVM.View
             InitializeComponent();
         }
 
-
-
         private MainWindowViewModel _mainWindowViewModel;
         public MainWindowViewModel mainWindowViewModel {
 
@@ -42,7 +40,6 @@ namespace TestGPS.MVVM.View
 
                 return _mainWindowViewModel;
             }
-
         }
 
         private void ListView_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

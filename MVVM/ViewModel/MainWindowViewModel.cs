@@ -2,7 +2,7 @@
 // Author: Marcello Jorizzo
 // Creation Date: 24.01.2023
 // Last Modified: 09.06.2024
-// Description: This program allows users to quickly calculate in between two GPS points in a given step range
+// Description: This program allows users to quickly calculate additional points in between two GPS points in a given step range; defaultStep is 0.7 meter
 
 
 //DataBindingHandler
@@ -28,9 +28,9 @@ namespace TestGPS.MVVM.ViewModel
 
         private double longitude;
         private double latitude;
-        private double step;
+        private double step; // in meter
         const double defaultValue = 0.000000;
-        const double defaultStep = 0.7;
+        const double defaultStep = 0.7; // defaultStep is 0.7 meter
         private double _distance;
 
         private GPSList _gpsList;
@@ -68,7 +68,6 @@ namespace TestGPS.MVVM.ViewModel
                 OnPropertyChanged("GPSListComplete");
             }
         }
-
 
         public double Longitude
         {
@@ -121,8 +120,6 @@ namespace TestGPS.MVVM.ViewModel
             }
         }
 
-
-
         private GPS _gps = new GPS();
         public GPS Gps
         {
@@ -142,8 +139,7 @@ namespace TestGPS.MVVM.ViewModel
             GetGPSCommand = new RelayCommand(GetGPS);
             WriteToFileCommand = new RelayCommand(WriteToFile);
             ClearListCommand = new RelayCommand(ClearList);
-           
-            
+                     
             Longitude = defaultValue;
             Latitude = defaultValue;
             Step = defaultStep;
@@ -165,7 +161,6 @@ namespace TestGPS.MVVM.ViewModel
 
                 GPSList.Add(gps);
 
-
                 // Textfelder zurück auf default Values
                 Longitude = defaultValue;
                 Latitude = defaultValue;
@@ -173,13 +168,11 @@ namespace TestGPS.MVVM.ViewModel
             }
         }
 
-
         private void GetGPS()
         {
             
             this.GPSListComplete=GPSMovement.getNewPoints(GPSList);
         }
-
 
         public void WriteToFile() 
 {
