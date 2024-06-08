@@ -303,7 +303,7 @@ namespace TestGPS.MVVM.Model
 
             // Informationen für das txt File:
             string userName = Environment.UserName;
-            k_writer.WriteLine(String.Format("creator: {0}",userName));
+            k_writer.WriteLine($"creator: {userName}");
             
 
             foreach (GPS value in n_wayPoints)
@@ -329,7 +329,7 @@ namespace TestGPS.MVVM.Model
             // Informationen für das gpx File:
            string userName = Environment.UserName;
             pgxWriter.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>");
-            pgxWriter.WriteLine (String.Format("<gpx version=\"1.1\" creator=\"{0}\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.topografix.com/GPX/1/1\" xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">", userName));
+            pgxWriter.WriteLine ($"<gpx version=\"1.1\" creator=\"{userName}\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.topografix.com/GPX/1/1\" xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">");
             
 
             // Zählvariable für die Kennzeichung der Koodrianatenpunkte definieren
