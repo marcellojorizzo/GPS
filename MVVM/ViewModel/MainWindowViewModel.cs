@@ -1,4 +1,11 @@
-﻿//DataBindingHandler
+﻿// Filename: GPS.cs
+// Author: Marcello Jorizzo
+// Creation Date: 24.01.2023
+// Last Modified: 09.06.2024
+// Description: This program allows users to quickly calculate in between two GPS points in a given step range
+
+
+//DataBindingHandler
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

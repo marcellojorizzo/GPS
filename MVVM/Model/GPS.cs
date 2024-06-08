@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Filename: GPS.cs
+// Author: Marcello Jorizzo
+// Creation Date: 24.01.2023
+// Last Modified: 09.06.2024
+// Description: This program allows users to quickly calculate in between two GPS points in a given step range
+
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -9,7 +16,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TestGPS.MVVM.Model;
 using TestGPS.MVVM.ViewModel;
-using TestGPS.MVVM.View; // <!!!!!!!!!!!!!!!!
+using TestGPS.MVVM.View; 
 
 namespace TestGPS.MVVM.Model
 {
@@ -294,7 +301,12 @@ namespace TestGPS.MVVM.Model
             // Dateipfad  für  .txt TestFile output: 
             string testPutFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "_test.txt");
 
+            // StreamWriter öffnen:
             StreamWriter k_writer = new StreamWriter(testPutFile);
+
+            // Informationen für das txt File:
+            k_writer.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>");
+            
 
             foreach (GPS value in n_wayPoints)
             {
@@ -313,12 +325,14 @@ namespace TestGPS.MVVM.Model
             // Dateipfad  für .gpx TestFile output: 
             string gpxFileOut = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "_test.gpx");
 
-
             // StreamWriter öffnen:
             StreamWriter pgxWriter = new StreamWriter(gpxFileOut);
 
             // Informationen für das gpx File:
+           string userName = Environment.UserName;
             pgxWriter.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>");
+            pgxWriter.WriteLine ("<gpx version=\"1.1\" creator=\"Environment.UserName\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.topografix.com/GPX/1/1\" xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd\">");
+            
 
 
             // Zählvariable für die Kennzeichung der Koodrianatenpunkte definieren
