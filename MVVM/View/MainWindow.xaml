@@ -4,8 +4,8 @@ Creation Date: 24.01.2023
 Last Modified: 09.06.2024
 Description: This program allows users to quickly calculate additional points in between two GPS points in a given step range; defaultStep is 0.7 meter
 -->
-    
-    <Window x:Class="TestGPS.MVVM.View.MainWindow"
+
+<Window x:Class="TestGPS.MVVM.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -56,12 +56,13 @@ Description: This program allows users to quickly calculate additional points in
             <Label Content="Latitude:" HorizontalAlignment="Left" Height="30" Margin="80,114,0,0" VerticalAlignment="Top" Width="82"/>
             <TextBox x:Name="LatitudeBox" HorizontalAlignment="Left" Margin="162,114,0,0" TextWrapping="Wrap" Text="{Binding Latitude, StringFormat=F1}" VerticalAlignment="Top" Width="158" Height="30"/>
             <Label Content="Step:" HorizontalAlignment="Left" Height="30" Margin="80,164,0,0" VerticalAlignment="Top" Width="82"/>
-            <TextBox x:Name="IncremetBox" HorizontalAlignment="Left" Margin="162,164,0,0" TextWrapping="Wrap" Text="{Binding Step,StringFormat=F1}" VerticalAlignment="Top" Width="158" Height="30"/>
+            <TextBox x:Name="IncremetBox" HorizontalAlignment="Left" Margin="162,164,0,0" TextWrapping="Wrap" Text="{Binding Step,StringFormat=F1}" VerticalAlignment="Top" Width="91" Height="30"/>
             <Button x:Name="AddGPS" Content="Add GPS Point" HorizontalAlignment="Left" Height="45" Margin="345,67,0,0" VerticalAlignment="Top" Width="150" Command="{Binding AddGPSCommand}" />
             <Button x:Name="GetGPS" Content="Get new WayPoints" HorizontalAlignment="Left" Height="45" Margin="345,147,0,0" VerticalAlignment="Top" Width="150" Command="{Binding GetGPSCommand}" />
             <Label Content="Koordinaten" HorizontalAlignment="Left" Height="30" Margin="80,219,0,0" VerticalAlignment="Top" Width="82"/>
             <Button x:Name="WriteToFile" Content="Write to File" HorizontalAlignment="Left" Height="45" Margin="525,67,0,0" VerticalAlignment="Top" Width="150" Command="{Binding WriteToFileCommand}" />
             <Button Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="525,147,0,0" Width="155" Height="45" Command="{Binding ClearListCommand}"/>
+            <Label Content="Meter" HorizontalAlignment="Left" Height="30" Margin="258,164,0,0" VerticalAlignment="Top" Width="77"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
